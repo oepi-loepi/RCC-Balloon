@@ -49,7 +49,8 @@ Item {
 			id: spriteImage
 			//source: "Balloon4SpriteSheet.png"
 			//source: "https://github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon4SpriteSheet.png"
-			source: "http://localhost/images/SantaSprites2.png"
+			source: "qrc:/qb/components/Balloon4SpriteSheet.png"
+			//source: "http://localhost/images/SantaSprites2.png"
 
 			y:0
 			x:-parent.width*sprite.frame
