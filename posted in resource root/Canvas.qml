@@ -62,16 +62,9 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
-
-//TSC animation MOD Start
         property bool isBalloonMode: false
-	property bool isVisibleinDimState: true
-	property int animationInterval : 1000
-	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
-	
-//TSC animation MOD End	
 
-	property int appsToLoad//TSC animation MOD Start
+	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
 
 	signal queuedSignal
@@ -595,18 +588,9 @@ Window {
 		anchors.fill: parent
 	}
 
-//TSC animation MOD Start
-	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
-		if (animationtime === undefined) animationtime = 1000
-		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
-		if (visibleindimstate === undefined) visibleindimstate = false
-		
-		animationInterval = animationtime
-		qmlAnimationURL = animationtype
+	function balloonMode(balloonmode) {
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
-		if (visibleindimstate == "yes"){isVisibleinDimState = true}
-		if (visibleindimstate == "no"){isVisibleinDimState = false}
 	}
 
 	Rectangle {
@@ -614,15 +598,18 @@ Window {
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
-			interval : animationInterval
+			interval: 1000
 			repeat: true
+			//running : true
 			running: isBalloonMode
 			onTriggered: {
-				var component = Qt.createComponent(qmlAnimationURL);
+				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
+				balloon.x = ((Math.random() * parent.width)-60);
+				balloon.y = parent.height;
 			}
 		}
-		visible: (isVisibleinDimState || !dimState)
+		visible: isBalloonMode
     	}
 
 	Loader {
@@ -651,9 +638,6 @@ Window {
 			}
 		}
 	}
-
-//TSC animation MOD End
-
 
 	BxtResponseHandler {
 		id: packageConfigResponseHandler
