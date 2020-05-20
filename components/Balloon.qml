@@ -49,7 +49,7 @@ Item {
 
         Image {
 			id: spriteImage
-			source: "https://github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon4SpriteSheet.png"
+			source: "https://raw.githubusercontent.com/oepi-loepi/RCC-Balloon/master/components/Balloon4SpriteSheet.png"
 
 			y:0
 			x:-parent.width*sprite.frame
