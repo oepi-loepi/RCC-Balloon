@@ -3,7 +3,7 @@
 import QtQuick 2.1
 
 Item {
-    id: balloon
+    id: balloon2
 
     property bool destroyed: false
 
