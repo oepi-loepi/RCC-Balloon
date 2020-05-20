@@ -3,6 +3,9 @@
 import QtQuick 2.1
 
 Item {
+
+
+
     id: balloon2
 
     width: 120
