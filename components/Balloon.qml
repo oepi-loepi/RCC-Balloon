@@ -5,8 +5,6 @@ import QtQuick 2.1
 Item {
     id: balloon2
 
-    property bool destroyed: false
-
     width: 120
     height: 120
     x : ((Math.random() * parent.width)-60);
@@ -61,16 +59,15 @@ Item {
 		return Math.floor(Math.random() * (to - from + 1) + from);
     }
 
-    //property int speed: randomNumber(1, 4)
     property int speed: randomNumber(3, 6)
     Timer {
         interval: 50
         running: true
         repeat: true
         onTriggered: {
-            balloon.y -= balloon.speed;
-            if (balloon.y + balloon.height < -30) {
-               balloon.destroy();
+            balloon2.y -= balloon2.speed;
+            if (balloon2.y + balloon2.height < -30) {
+               balloon2.destroy();
             }
         }
     }
